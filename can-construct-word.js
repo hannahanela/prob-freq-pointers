@@ -1,3 +1,4 @@
+"use strict";
 // add whatever parameters you deem necessary & write doc comment
 
 //takes two string: word, letters
@@ -41,10 +42,16 @@ function createFreqCounter(string){
 function canConstructWord(word, letters) {
     
     //setting variables for the freq count func for each string
-    //for loop to look over keys of the first string's object
-    //compare to same key in second string's object
-    //if equal, continue loop over first string's object, continue checking until done iterating over object,
-    //once iterated over full object, return true 
-    //if false equivalency, return false 
-    
+    const wordFreq = createFreqCounter(word);
+    const lettersFreq = createFreqCounter(letters);
+
+    for (let char in wordFreq) {
+        if (lettersFreq[char] === undefined) {
+            return false;
+        } else if (wordFreq[char] !== lettersFreq[char]) {
+            return false;
+        }
+    }
+
+    return true;
 }
