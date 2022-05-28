@@ -44,11 +44,14 @@ function canConstructWord(word, letters) {
     //setting variables for the freq count func for each string
     const wordFreq = createFreqCounter(word);
     const lettersFreq = createFreqCounter(letters);
-
+    console.log('wordfreq obj', wordFreq, 'lettersfreq obj', lettersFreq);
+    
     for (let char in wordFreq) {
+        console.log('char', char);
         if (lettersFreq[char] === undefined) {
             return false;
-        } else if (wordFreq[char] !== lettersFreq[char]) {
+        } else if (wordFreq[char] > lettersFreq[char]) {
+            console.log('wordFreq[char]=', wordFreq[char], 'letter[char]=', lettersFreq[char]);
             return false;
         }
     }
